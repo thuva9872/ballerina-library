@@ -130,7 +130,7 @@ jobs:
               """Escape backslashes and double-quotes for a TOML basic string."""
               return s.replace("\\", "\\\\").replace('"', '\\"')
 
-          api_key    = os.environ["LLM_API_KEY"]
+          api_key    = toml_escape(os.environ["LLM_API_KEY"])
           user_goal  = toml_escape(os.environ["USER_GOAL"])
           code_port  = int(os.environ["CODE_SERVER_PORT"])
           agent_port = int(os.environ["AGENT_SERVER_PORT"])
@@ -262,5 +262,6 @@ jobs:
             example-doc-generator/artifacts/screenshots/
             example-doc-generator/artifacts/workflow-docs/
             example-doc-generator/connector-meta.json
+            example-doc-generator/${{ steps.connector.outputs.dir_name }}/
           retention-days: 30
           if-no-files-found: warn

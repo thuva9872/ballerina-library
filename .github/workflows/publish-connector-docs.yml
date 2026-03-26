@@ -42,7 +42,7 @@ jobs:
     # Repo/branch defaults — used when triggered by workflow_run (no inputs available).
     # Override these via workflow_dispatch inputs when re-publishing manually.
     env:
-      DOCS_FORK: ${{ inputs.docsIntegratorFork }}
+      DOCS_FORK: ${{ inputs.docsIntegratorFork || 'wso2/docs-integrator' }}
       DOCS_UPSTREAM: ${{ inputs.docsIntegratorUpstream || 'wso2/docs-integrator' }}
       DOCS_BASE_BRANCH: ${{ inputs.docsIntegratorBaseBranch || 'dev' }}
 
